@@ -1,0 +1,24 @@
+[Unit]
+Description=Wake Claude Once (CLI mode)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/wjchengx/projects/wakeup_claude
+Environment=WAKEUP_ROOT=/home/wjchengx/projects/wakeup_claude
+Environment=WAKEUP_MODEL=haiku
+Environment=WAKEUP_EFFORT=low
+Environment=WAKEUP_PROMPT=1
+Environment=WAKEUP_SYSTEM_PROMPT=Return exactly: 1
+Environment=WAKEUP_TIMEOUT_SECONDS=60
+ExecStart=/bin/bash /home/wjchengx/projects/wakeup_claude/scripts/claude_wakeup_cli.sh
+# Hard ceiling to avoid hanging instances.
+RuntimeMaxSec=90
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=false
+
+[Install]
+WantedBy=multi-user.target

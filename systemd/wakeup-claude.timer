@@ -1,0 +1,14 @@
+[Unit]
+Description=Run wakeup-claude at 04:58, 09:59, 15:00, 20:01
+
+[Timer]
+OnCalendar=*-*-* 04:58:00
+OnCalendar=*-*-* 09:59:00
+OnCalendar=*-*-* 15:00:00
+OnCalendar=*-*-* 20:01:00
+RandomizedDelaySec=9
+Persistent=true
+Unit=wakeup-claude.service
+
+[Install]
+WantedBy=timers.target

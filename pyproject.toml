@@ -1,0 +1,11 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wakeup-claude"
+version = "0.1.0"
+description = "Low-cost Claude wake-up scheduler (CLI + systemd)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
