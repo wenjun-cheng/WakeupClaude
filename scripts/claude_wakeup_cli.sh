@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT_DIR="${WAKEUP_ROOT:-/home/wjchengx/projects/wakeup_claude}"
+# Default to repo root inferred from this script location.
+ROOT_DIR="${WAKEUP_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 LOG_DIR="${WAKEUP_LOG_DIR:-$ROOT_DIR/logs}"
 JSON_LOG="${WAKEUP_JSON_LOG:-$LOG_DIR/cli-wakeup.jsonl}"
 TEXT_LOG="${WAKEUP_TEXT_LOG:-$LOG_DIR/cli-wakeup.log}"

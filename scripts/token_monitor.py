@@ -7,11 +7,14 @@ import json
 from pathlib import Path
 
 
+DEFAULT_LOG_FILE = Path(__file__).resolve().parent.parent / "logs" / "cli-wakeup.jsonl"
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Show wake-up token usage entries")
     parser.add_argument(
         "--log-file",
-        default="logs/cli-wakeup.jsonl",
+        default=str(DEFAULT_LOG_FILE),
         help="JSONL token log file",
     )
     parser.add_argument(
