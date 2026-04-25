@@ -1,3 +1,6 @@
+[Unit]
+Description=Wake Claude schedule
+
 [Timer]
 OnCalendar=*-*-* 04:58:00
 OnCalendar=*-*-* 09:59:00

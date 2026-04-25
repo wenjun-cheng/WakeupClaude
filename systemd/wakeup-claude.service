@@ -10,7 +10,7 @@ Environment=WAKEUP_ROOT=%h/projects/WakeupClaude
 Environment=WAKEUP_MODEL=haiku
 Environment=WAKEUP_EFFORT=low
 Environment=WAKEUP_PROMPT=1
-Environment=WAKEUP_SYSTEM_PROMPT=Return exactly: 1
+Environment="WAKEUP_SYSTEM_PROMPT=Return exactly: 1"
 Environment=WAKEUP_TIMEOUT_SECONDS=60
 ExecStart=/bin/bash %h/projects/WakeupClaude/scripts/claude_wakeup_cli.sh
 # Hard ceiling to avoid hanging instances.

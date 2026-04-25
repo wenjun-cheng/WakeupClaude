@@ -22,7 +22,7 @@ Environment=WAKEUP_ROOT=$ROOT_DIR
 Environment=WAKEUP_MODEL=haiku
 Environment=WAKEUP_EFFORT=low
 Environment=WAKEUP_PROMPT=1
-Environment=WAKEUP_SYSTEM_PROMPT=Return exactly: 1
+Environment="WAKEUP_SYSTEM_PROMPT=Return exactly: 1"
 Environment=WAKEUP_TIMEOUT_SECONDS=60
 ExecStart=/bin/bash $ROOT_DIR/scripts/claude_wakeup_cli.sh
 RuntimeMaxSec=90
@@ -36,6 +36,9 @@ WantedBy=default.target
 EOF
 
 cat >"$TIMER_PATH" <<'EOF'
+[Unit]
+Description=Wake Claude schedule
+
 [Timer]
 OnCalendar=*-*-* 04:58:00
 OnCalendar=*-*-* 09:59:00
@@ -46,6 +49,8 @@ Persistent=true
 [Install]
 WantedBy=timers.target
 EOF
+
+systemd-analyze --user verify "$SERVICE_PATH" "$TIMER_PATH"
 
 systemctl --user daemon-reload
 systemctl --user enable --now wakeup-claude.timer
