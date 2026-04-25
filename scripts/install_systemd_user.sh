@@ -25,7 +25,6 @@ Environment=WAKEUP_PROMPT=1
 Environment="WAKEUP_SYSTEM_PROMPT=Return exactly: 1"
 Environment=WAKEUP_TIMEOUT_SECONDS=60
 ExecStart=/bin/bash $ROOT_DIR/scripts/claude_wakeup_cli.sh
-RuntimeMaxSec=90
 NoNewPrivileges=true
 PrivateTmp=true
 ProtectSystem=full

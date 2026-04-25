@@ -62,6 +62,11 @@ def main() -> int:
     args = parse_args()
     log_path = Path(args.log_file)
     rows = load_entries(log_path)
+    if not rows:
+        print(f"no log entries found: {log_path}")
+        print("hint: wait for timer trigger or run service once via systemctl --user start wakeup-claude.service")
+        return 0
+
     daily = [r for r in rows if day_of(r) == args.day]
 
     def sum_key(key: str) -> int:
@@ -88,6 +93,9 @@ def main() -> int:
                 f"ok={row.get('ok')} "
                 f"used_tokens={usage.get('total_tokens', 0)}"
             )
+    else:
+        print(f"no entries for day={args.day}")
+        print("hint: try --summary, choose another --day, or check logs/cli-wakeup.jsonl")
 
     return 0
 
